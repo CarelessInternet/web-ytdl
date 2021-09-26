@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+body {
+  background-color: rgb(27, 27, 27);
+}
+label, input, h5, ::placeholder {
+  font-family: 'Open Sans', sans-serif;
+}
+label {
+  color: rgb(238, 232, 232);
+  font-size: larger;
+}
+h5, ::placeholder {
+  text-align: center;
+  color: rgb(238, 232, 232);
+}
