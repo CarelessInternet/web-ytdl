@@ -2,10 +2,6 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
 
-beforeEach(() => {
-  jest.setTimeout(20 * 1000);
-})
-
 test('have download button', () => {
   render(<App />);
   expect(screen.getByRole('button')).toBeInTheDocument();
@@ -49,7 +45,7 @@ test('download me at the zoo youtube video (0:18 long)', async () => {
   button.click();
 
   await waitFor(() => {
-    expect(screen.getByRole('source')).toBeInTheDocument();
+    expect(screen.getByTestId('source')).toBeInTheDocument();
   }, {
     timeout: 20 * 1000
   });
@@ -65,7 +61,7 @@ test('download ksi & lil wayne - lose youtube video (3:33 long) and 10 min count
   button.click();
 
   await waitFor(() => {
-    expect(screen.getByRole('source')).toBeInTheDocument();
+    expect(screen.getByTestId('source')).toBeInTheDocument();
   }, {
     timeout: 20 * 1000
   });
@@ -74,7 +70,7 @@ test('download ksi & lil wayne - lose youtube video (3:33 long) and 10 min count
   button.click();
 
   await waitFor(() => {
-    expect(screen.getByRole('source')).toBeInTheDocument();
+    expect(screen.getByTestId('source')).toBeInTheDocument();
   }, {
     timeout: 20 * 1000
   });

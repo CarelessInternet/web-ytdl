@@ -74,7 +74,7 @@ const App = () => {
         { error && <h5 className="text-center">{ error }</h5> }
         { data && (
           <video width="500px" controls>
-            <source role="source" src={ URL.createObjectURL(data) } />
+            <source data-testid="source" src={ URL.createObjectURL(data) } />
           </video>
         ) }
       </Form>
