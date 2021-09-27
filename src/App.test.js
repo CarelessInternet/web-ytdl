@@ -1,6 +1,11 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import server from '../server/index';
 import App from './App';
+
+afterAll(() => {
+  server.close();
+});
 
 test('have download button', () => {
   render(<App />);
@@ -63,7 +68,7 @@ test('download ksi & lil wayne - lose youtube video (3:33 long) and 10 min count
   await waitFor(() => {
     expect(screen.getByTestId('source')).toBeInTheDocument();
   }, {
-    timeout: 20 * 1000
+    timeout: 30 * 1000
   });
 
   userEvent.type(input, 'https://www.youtube.com/watch?v=4ASKMcdCc3g');
@@ -72,6 +77,6 @@ test('download ksi & lil wayne - lose youtube video (3:33 long) and 10 min count
   await waitFor(() => {
     expect(screen.getByTestId('source')).toBeInTheDocument();
   }, {
-    timeout: 20 * 1000
+    timeout: 30 * 1000
   });
 });

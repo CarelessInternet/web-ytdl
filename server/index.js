@@ -12,6 +12,8 @@ app.use(cors({
 
 app.use('/api/download', download);
 
-app.listen(8000, function() {
+const server = app.listen(8000, function() {
   console.log(`Server listening at port ${this.address().port}`);
 });
+
+export default server;
