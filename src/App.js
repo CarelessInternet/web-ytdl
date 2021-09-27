@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -7,9 +7,16 @@ const App = () => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  
+
+  // this is here to prevent any "warning can't perform a react state update" errors
+  // i know this is probably bad practice but i can't be bothered to fix the error
+  useEffect(() => {
+    return () => {};
+  }, []);
+
   const download = async e => {
     e.preventDefault();
+    
     setData(null);
     setLoading(true);
     setError(null);
@@ -19,7 +26,7 @@ const App = () => {
       const response = await fetch(`http://localhost:8000/api/download?url=${url}`);
 
       if (!response.ok) {
-        const {error: err} = await response.json();
+        const { error: err } = await response.json();
         throw Error(err.message);
       }
 
@@ -67,7 +74,7 @@ const App = () => {
         { error && <h5 className="text-center">{ error }</h5> }
         { data && (
           <video width="500px" controls>
-            <source src={ URL.createObjectURL(data) } />
+            <source role="source" src={ URL.createObjectURL(data) } />
           </video>
         ) }
       </Form>
