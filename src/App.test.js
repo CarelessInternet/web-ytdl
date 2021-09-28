@@ -51,6 +51,20 @@ test('get invalid youtube video url error', async () => {
   });
 });
 
+test('get video unavailabe error', async () => {
+  render(<App />);
+
+  const input = screen.getByPlaceholderText('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+  userEvent.type(input, 'https://www.youtube.com/watch?v=dhrh5gjfgha');
+  
+  const button = screen.getByRole('button');
+  button.click();
+
+  await waitFor(() => {
+    expect(screen.getByText('Video unavailable')).toBeInTheDocument();
+  });
+})
+
 test('download me at the zoo youtube video (0:18 long)', async () => {
   render(<App />);
 
