@@ -69,7 +69,7 @@ const App = () => {
           onClick={ download }
           disabled={ isLoading }
         >
-          {isLoading ? 'Downloading...' : 'Download'}
+          { isLoading ? 'Downloading...' : 'Download' }
         </Button>
         { error && <h5 className="text-center">{ error }</h5> }
         { data && (
