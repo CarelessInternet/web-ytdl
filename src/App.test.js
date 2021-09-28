@@ -26,6 +26,17 @@ test('download button disables after click', () => {
   expect(button).toBeDisabled();
 });
 
+test('get no url was specified error', async () => {
+  render(<App />);
+
+  const button = screen.getByRole('button');
+  button.click();
+
+  await waitFor(() => {
+    expect(screen.getByText('No URL was specified')).toBeInTheDocument();
+  });
+});
+
 test('get invalid youtube video url error', async () => {
   render(<App />);
 
